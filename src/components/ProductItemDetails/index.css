@@ -226,16 +226,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   padding-left: 0;
+  /* border: 1px solid red; */
 }
 
 @media screen and (min-width: 768px) {
   .similar-products-list {
     margin-top: 24px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .similar-products-list {
     flex-direction: row;
   }
 }
@@ -307,7 +303,6 @@
   background-color: green;
   color: white;
   border-radius: 50%;
-  /* padding: 10px; */
   width: 15px;
   height: 15px;
 }

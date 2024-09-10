@@ -32,6 +32,17 @@ class ProductItemDetails extends Component {
     this.getProductData()
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      match: {
+        params: {id},
+      },
+    } = this.props
+    if (id !== prevProps.match.params.id) {
+      this.getProductData()
+    }
+  }
+
   getFormattedData = data => ({
     availability: data.availability,
     brand: data.brand,

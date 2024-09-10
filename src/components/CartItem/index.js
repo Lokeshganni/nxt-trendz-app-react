@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 import {AiFillCloseCircle} from 'react-icons/ai'
 
@@ -20,51 +21,53 @@ const CartItem = props => (
       }
 
       return (
-        <li className="cart-item">
-          <img className="cart-product-image" src={imageUrl} alt={title} />
-          <div className="cart-item-details-container">
-            <div className="cart-product-title-brand-container">
-              <p className="cart-product-title">{title}</p>
-              <p className="cart-product-brand">by {brand}</p>
+        <li className="li-ele">
+          <Link className="cart-item" to={`/products/${id}`}>
+            <img className="cart-product-image" src={imageUrl} alt={title} />
+            <div className="cart-item-details-container">
+              <div className="cart-product-title-brand-container">
+                <p className="cart-product-title">{title}</p>
+                <p className="cart-product-brand">by {brand}</p>
+              </div>
+              <div className="cart-quantity-container">
+                <button
+                  onClick={() => decrementCartItemQuantity(id)}
+                  type="button"
+                  className="quantity-controller-button"
+                  data-testid="minus"
+                >
+                  <BsDashSquare color="#52606D" size={12} />
+                </button>
+                <p className="cart-quantity">{quantity}</p>
+                <button
+                  onClick={() => incrementCartItemQuantity(id)}
+                  type="button"
+                  className="quantity-controller-button"
+                  data-testid="plus"
+                >
+                  <BsPlusSquare color="#52606D" size={12} />
+                </button>
+              </div>
+              <div className="total-price-remove-container">
+                <p className="cart-total-price">Rs {price * quantity}/-</p>
+                <button
+                  className="remove-button"
+                  type="button"
+                  onClick={onRemoveCartItem}
+                  data-testid="remove"
+                >
+                  Remove
+                </button>
+              </div>
             </div>
-            <div className="cart-quantity-container">
-              <button
-                onClick={() => decrementCartItemQuantity(id)}
-                type="button"
-                className="quantity-controller-button"
-                data-testid="minus"
-              >
-                <BsDashSquare color="#52606D" size={12} />
-              </button>
-              <p className="cart-quantity">{quantity}</p>
-              <button
-                onClick={() => incrementCartItemQuantity(id)}
-                type="button"
-                className="quantity-controller-button"
-                data-testid="plus"
-              >
-                <BsPlusSquare color="#52606D" size={12} />
-              </button>
-            </div>
-            <div className="total-price-remove-container">
-              <p className="cart-total-price">Rs {price * quantity}/-</p>
-              <button
-                className="remove-button"
-                type="button"
-                onClick={onRemoveCartItem}
-                data-testid="remove"
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-          <button
-            className="delete-button"
-            type="button"
-            onClick={onRemoveCartItem}
-          >
-            <AiFillCloseCircle color="#616E7C" size={20} />
-          </button>
+            <button
+              className="delete-button"
+              type="button"
+              onClick={onRemoveCartItem}
+            >
+              <AiFillCloseCircle color="#616E7C" size={20} />
+            </button>
+          </Link>
         </li>
       )
     }}
